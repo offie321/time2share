@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->foreignId('role_id')->constrained('roles', 'role_id');
-            $table->rememberToken();
+            $table->foreignId('lending_id')->constrained('lendings', 'id')->onDelete('cascade');
+            $table->foreignId('reviewer_id')->constrained('users', 'id')->onDelete('cascade');
+            $table->integer('rating');
+            $table->text('comment');
+            $table->dateTime('created_at');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('reviews');
     }
 };
