@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lender_id')->constrained('users', 'user_id')->onDelete('cascade');
+            $table->foreignId('lender_id')->constrained('users', 'id')->onDelete('cascade');
             $table->string('name');
             $table->text('summary');
-            $table->string("categories");
+            $table->string('categories');
             $table->timestamps();
         });
     }
