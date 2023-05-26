@@ -33,5 +33,11 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script src="{{ mix('js/app.js') }}"></script>
+
+        <script>
+            window.Alpine || (window.Alpine = require('alpinejs'));
+        </script>
     </body>
 </html>
