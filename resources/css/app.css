@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.products_section{
+    color: white;
+    width: 80vw;
+    padding: 2em;
+    background-color: rgba(64, 73, 119, 0.2);
+    margin: 0 auto;
+    margin-top: 3em;
+    border-radius: 1em;
+}
+
+
+.products_section > .product{
+    margin: 0.3em;
+    padding: 1em;
+    border-radius: 0.4em;
+    background-color: rgba(139, 145, 175, 0.2);
+}
+
+
+
+.product_categories{
+    background-color: rgba(0, 7, 40, 0.2);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 0px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+
+.product > .lender_info{
+    background-color: black;
+    float: right;
+    top: 0;
+}
