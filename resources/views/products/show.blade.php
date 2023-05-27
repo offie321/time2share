@@ -30,23 +30,17 @@
 
     <!-- Page Content -->
     <main>
-        <section class="products_section">
-            @if(count($products) > 1)
-                @foreach($products as $product)
-                    <article class="product">
-                        <a href="/products/{{$product->id}}">
-                            <h1>{{ $product->name }}</h1>
-                        </a>
+        <section class="sngl_prod">
+            <a class="back_btn" href="{{ redirect()->getUrlGenerator()->previous() }}">Go back</a>
+            <article class="product">
+                <h1>{{ $product->name }}</h1>
 
-                        <p class="lender_info">{{ $product->lender_id }}</p>
-                        <p>{{ $product->summary }}</p>
-                        <span class="product_categories">{{ $product->categories }}</span>
 
-                    </article>
-                @endforeach
-            @else
-                <p>No Products</p>
-            @endif
+                <p class="lender_info">{{ $product->lender_id }}</p>
+                <p>{{ $product->summary }}</p>
+                <span class="product_categories">{{ $product->categories }}</span>
+
+            </article>
         </section>
     </main>
 </div>

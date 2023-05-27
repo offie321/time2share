@@ -19,16 +19,13 @@ class ProductSeeder extends Seeder
     {
         //
         // Retrieve the user instances to assign as lenders
-        $lenders = User::all();
 
         // Create dummy products
-        for ($i = 1; $i <= 10; $i++) {
-            Product::create([
-                'lender_id' => 1,
-                'name' => 'Product 1',
-                'summary' => 'Summary of Product 1',
-                'categories' => 'Category 1, Category 2',
-            ]);
-        }
+        Product::create([
+            'lender_id' => 1,
+            'name' => 'Product 1',
+            'summary' => 'Summary of Product 1',
+            'categories' => 'Gehakt',
+        ]);
     }
 }

@@ -4,12 +4,13 @@
 
 
 .products_section{
+    display: grid;
+    grid-template-columns: auto auto;
     color: white;
     width: 80vw;
     padding: 2em;
     background-color: rgba(64, 73, 119, 0.2);
-    margin: 0 auto;
-    margin-top: 3em;
+    margin: 3em auto 0;
     border-radius: 1em;
 }
 
@@ -36,8 +37,29 @@
     border-radius: 16px;
 }
 
-.product > .lender_info{
+.products_section .lender_info{
     background-color: black;
     float: right;
     top: 0;
+}
+
+/*Single product styling */
+.sngl_prod{
+    background-color: #4a5568;
+    color: white;
+    width: 80vw;
+    margin: 1em auto;
+    padding: 2em;
+    border-radius: 2em;
+}
+
+.sngl_prod h1{
+ font-size: 2em;
+}
+
+.sngl_prod .back_btn{
+    background-color: #1f2937;
+    padding: 0.4em;
+    border-radius: 2em;
+    color: white;
 }

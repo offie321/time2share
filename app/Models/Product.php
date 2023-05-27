@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['lender_id', 'name', 'summary', 'categories'];
+
     protected $table = 'products';
 
     public function pictures()
