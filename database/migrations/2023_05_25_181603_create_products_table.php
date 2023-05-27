@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('lender_id')->constrained('users', 'id')->onDelete('cascade');
             $table->string('name');
             $table->text('summary');
-            $table->string('categories');
+            $table->string('categories')->nullable(true);
             $table->timestamps();
         });
     }
