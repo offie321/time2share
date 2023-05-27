@@ -63,3 +63,16 @@
     border-radius: 2em;
     color: white;
 }
+
+.sngl_prod .delete-btn{
+    background-color: red;
+}
+
+.sngl_prod .delete-btn{
+    padding: 0.4em;
+    border-radius: 1em;
+}
+
+.sngl_prod .delete-btn:hover{
+    cursor: pointer;
+}

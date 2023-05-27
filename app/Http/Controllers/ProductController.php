@@ -73,11 +73,12 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -87,9 +88,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->name = $request->name;
+        $product->summary = $request->summary;
+        $product->categories = $request->categories;
+
+        $product->save();
+
+        return redirect()->route('products.index')->with('success', 'Product Changed');
+
     }
 
     /**
@@ -98,8 +106,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
         //
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Product Deleted');
     }
 }

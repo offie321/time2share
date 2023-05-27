@@ -948,6 +948,12 @@ video {
     padding: 0.4em;
     border-radius: 2em;
     color: white;
+}.sngl_prod .delete-btn{
+    background-color: red;
+    padding: 0.4em;
+    border-radius: 1em;
+}.sngl_prod .delete-btn:hover{
+    cursor: pointer;
 }.hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));

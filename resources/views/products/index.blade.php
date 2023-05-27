@@ -31,16 +31,21 @@
     <!-- Page Content -->
     <main>
         <section class="products_section">
-            @if(count($products) > 1)
+            @if(count($products) > 0)
                 @foreach($products as $product)
                     <article class="product">
                         <a href="/products/{{$product->id}}">
                             <h1>{{ $product->name }}</h1>
                         </a>
 
-                        <p class="lender_info">{{ $product->lender_id }}</p>
+                            <p class="lender_info">
+                                {{ $product->lender_id }}
+                            </p>
+
                         <p>{{ $product->summary }}</p>
-                        <span class="product_categories">{{ $product->categories }}</span>
+                        @if($product->categories != null)
+                            <span class="product_categories">{{ $product->categories }}</span>
+                        @endif
 
                     </article>
                 @endforeach
