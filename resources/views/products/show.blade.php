@@ -31,15 +31,18 @@
     <!-- Page Content -->
     <main>
         <section class="sngl_prod">
-            <a class="back_btn" href="{{ redirect()->getUrlGenerator()->previous() }}">Go back</a>
+            <a class="btn" href="{{ redirect()->getUrlGenerator()->previous() }}">Go back</a>
             @if(Auth::id() == $product->lender_id)
-                <a href="/products/{{$product->id}}/edit">Edit</a>
+                <a class="btn-2" href="/products/{{$product->id}}/edit">Edit</a>
             @endif
             <article class="product">
                 <h1>{{ $product->name }}</h1>
 
-
-                <p class="lender_info">{{ $product->lender_id }}</p>
+                <a href="{{ route('profile.show', ['id' => $product->lender_id]) }}">
+                    <p class="lender_info">Uitgeleend door: {{ $username }}</p>
+                </a>
+                <br>
+                <h3>Omschrijving: </h3>
                 <p>{{ $product->summary }}</p>
                 @if($product->categories != null)
                 <span class="product_categories">{{ $product->categories }}</span>
@@ -50,8 +53,11 @@
             <form action="/products/{{ $product->id }}" method="POST">
                 @csrf
                 {{method_field('DELETE')}}
-                <input class="delete-btn" type="submit" name="submit" value="Delete">
+                <input class="btn-3" type="submit" name="submit" value="Delete">
             </form>
+            @endif
+            @if(Auth::id() != $product->lender_id)
+                <a class="btn" href="#">Borrow</a>
             @endif
         </section>
     </main>

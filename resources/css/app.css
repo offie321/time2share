@@ -5,7 +5,7 @@
 
 .products_section{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     color: white;
     width: 80vw;
     padding: 2em;
@@ -53,26 +53,66 @@
     border-radius: 2em;
 }
 
+.sngl_prod .product{
+    padding: 2em 1em;
+}
+
 .sngl_prod h1{
  font-size: 2em;
 }
 
-.sngl_prod .back_btn{
+.btn{
+    margin: 1em 0em;
     background-color: #1f2937;
-    padding: 0.4em;
+    padding: 0.4em 0.6em;
     border-radius: 2em;
     color: white;
 }
 
-.sngl_prod .delete-btn{
-    background-color: red;
+.btn-2{
+    margin: 1em 0em;
+    background-color: #3c8bec;
+    padding: 0.4em 0.6em;
+    border-radius: 2em;
+    color: black;
 }
 
-.sngl_prod .delete-btn{
-    padding: 0.4em;
-    border-radius: 1em;
+.btn-3{
+    margin: 1em 0em;
+    background-color: #980000;
+    padding: 0.4em 0.6em;
+    border-radius: 2em;
+    color: white;
 }
 
-.sngl_prod .delete-btn:hover{
+.btn:hover, .btn-2:hover, .btn-3:hover{
     cursor: pointer;
+    filter: brightness(0.8);
+}
+
+.profile_product_review{
+
+}
+
+.profile_product_review h2{
+    font-size: 2.5em;
+}
+
+.profile_products{
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2em;
+}
+
+.profile_products > .product{
+    background-color: #293252;
+    border-radius: 0.5em;
+    padding: 0.4em;
+}
+
+.profile_buttons{
+    display: flex;
+    gap: 1em;
+    justify-content: space-around;
+    max-width: fit-content;
 }

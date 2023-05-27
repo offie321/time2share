@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,9 +25,12 @@ class ProfileController extends Controller
 
     public function show(User $id): View
     {
-        return view('profile.show', [
-            'user' => $id,
-        ]);
+        $user = $id;
+
+        $userWithProducts = User::with('products')->findOrFail($user->id);
+
+        $products = $userWithProducts->products;
+        return view('profile.show', compact('user', 'products'));
     }
     /**
      * Update the user's profile information.
