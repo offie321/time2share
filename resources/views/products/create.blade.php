@@ -35,3 +35,9 @@
 
     </form>
 </x-guest-layout>
+
+<script src="{{ mix('js/app.js') }}"></script>
+
+<script>
+    window.Alpine || (window.Alpine = require('alpinejs'));
+</script>
