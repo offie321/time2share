@@ -16,10 +16,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $products = Product::all();
+        $searchTerm = $request->input('search');
+
+        if ($searchTerm) {
+            $products = Product::where('name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('summary', 'like', '%' . $searchTerm . '%')
+                ->get();
+        } else {
+            $products = Product::all();
+        }
 
         return view('products.index', compact('products'));
     }

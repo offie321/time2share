@@ -43,6 +43,33 @@
     top: 0;
 }
 
+.searchbar{
+    margin: 5em auto;
+    display: flex;
+    width: 60vw;
+    justify-content: center;
+}
+
+.searchbar input{
+    width: 100%;
+    padding: 0.5em;
+    border-bottom-left-radius: 1em;
+    border-top-left-radius: 1em;
+    background-color: #8596c2;
+    color: white;
+    border: none;
+}
+
+.searchbar button {
+    padding: 0.5em;
+    background-color: #2563eb;
+    color: white;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.searchbar button:hover {filter: brightness(0.8)}
+
 /*Single product styling */
 .sngl_prod{
     background-color: #4a5568;

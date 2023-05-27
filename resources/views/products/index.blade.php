@@ -30,6 +30,12 @@
 
     <!-- Page Content -->
     <main>
+        <form class="searchbar" action="{{ route('products.index') }}" method="GET">
+            <input type="text" name="search" placeholder="Search products...">
+            <button type="submit">Search</button>
+        </form>
+
+
         <section class="products_section">
             @if(count($products) > 0)
                 @foreach($products as $product)
