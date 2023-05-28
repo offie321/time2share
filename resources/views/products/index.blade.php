@@ -48,6 +48,8 @@
                                 {{ $product->lender_id }}
                             </p>
 
+                            How many days from now: {{ $product->days_from_now }}
+
                         <p>{{ $product->summary }}</p>
                         @if($product->categories != null)
                             <span class="product_categories">{{ $product->categories }}</span>

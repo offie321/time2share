@@ -40,6 +40,7 @@
 
                 <a href="{{ route('profile.show', ['id' => $product->lender_id]) }}">
                     <p class="lender_info">Uitgeleend door: {{ $username }}</p>
+                    <p>In te leveren binnen <u><b>{{$product->days_from_now}}</b></u> dagen</p>
                 </a>
                 <br>
                 <h3>Omschrijving: </h3>
@@ -57,7 +58,7 @@
             </form>
             @endif
             @if(Auth::id() != $product->lender_id)
-                <a class="btn" href="#">Borrow</a>
+                <a class="btn" href="/products/{{$product->id}}/lend/{{$product->lender_id}}/{{$product->days_from_now}}">Borrow</a>
             @endif
         </section>
     </main>

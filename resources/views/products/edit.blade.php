@@ -16,6 +16,12 @@
             <x-input-error :messages="$errors->get('summary')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="days" :value="__('Days')" />
+            <x-text-input id="days" class="block mt-1 w-full" type="text" name="days" :value="$product->days_from_now" required autocomplete="days" />
+            <x-input-error :messages="$errors->get('days')" class="mt-2" />
+        </div>
+
 
         <div class="flex items-center justify-end mt-4">
 

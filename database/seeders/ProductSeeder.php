@@ -26,6 +26,7 @@ class ProductSeeder extends Seeder
             'name' => 'Product 1',
             'summary' => 'Summary of Product 1',
             'categories' => 'Gehakt',
+            'days_from_now' => 5
         ]);
     }
 }

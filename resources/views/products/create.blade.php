@@ -16,6 +16,12 @@
             <x-input-error :messages="$errors->get('summary')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="days" :value="__('Days')" />
+            <x-text-input id="days" class="block mt-1 w-full" type="text" name="days" :value="old('days')" required autocomplete="days" />
+            <x-input-error :messages="$errors->get('days')" class="mt-2" />
+        </div>
+
 
         @foreach($categories as $category)
             <ul class="grid w-full gap-6 md:grid-cols-3">

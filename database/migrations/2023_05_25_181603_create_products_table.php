@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('summary');
             $table->string('categories')->nullable(true);
+            $table->integer('days_from_now');
             $table->timestamps();
         });
     }

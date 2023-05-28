@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LendingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -36,5 +37,5 @@ Route::get('products', 'ProductController@index')->name('products.index');
 
 Route::resource('products', ProductController::class);
 
-
+Route::get('/products/{id}/lend/{lender}/{days}', [LendingController::class, 'lend']);
 
