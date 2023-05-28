@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products', 'id')->onDelete('cascade');
             $table->foreignId('borrower_id')->constrained('users', 'id')->onDelete('cascade');
-            $table->foreignId('lender_id')->constrained('products', 'id')->onDelete('cascade');
+            $table->foreignId('lender_id')->constrained('users', 'id')->onDelete('cascade');
             $table->dateTime('deadline');
-            $table->boolean('accepted');
+            $table->string('status');
             $table->timestamps();
         });
     }
