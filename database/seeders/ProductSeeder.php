@@ -28,5 +28,21 @@ class ProductSeeder extends Seeder
             'categories' => 'Gehakt',
             'days_from_now' => 5
         ]);
+
+        Product::create([
+            'lender_id' => 1,
+            'name' => 'Speelgoed auto',
+            'summary' => 'Een hele mooie speelgoed auto',
+            'categories' => 'Speelgoed',
+            'days_from_now' => 10
+        ]);
+
+        Product::create([
+            'lender_id' => 1,
+            'name' => 'Boormachine',
+            'summary' => 'Een hele goede boormachine',
+            'categories' => 'Gereedschap',
+            'days_from_now' => 15
+        ]);
     }
 }
