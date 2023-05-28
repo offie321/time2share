@@ -57,9 +57,15 @@
                 <input class="btn-3" type="submit" name="submit" value="Delete">
             </form>
             @endif
-            @if(Auth::id() != $product->lender_id)
+            @if($product->borrower_id == Auth::id())
+            {{--//TODO Make this return button work and turn lending status to: awaiting acception --}}
+                <a class="btn" href="">Return</a>
+            @elseif(Auth::id() != $product->lender_id)
                 <a class="btn" href="/products/{{$product->id}}/lend/{{$product->lender_id}}/{{$product->days_from_now}}">Borrow</a>
             @endif
+
+
+
         </section>
     </main>
 </div>

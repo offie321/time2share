@@ -23,14 +23,20 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function show(User $id): View
+    public function show(User $id)
     {
+        // This is so some content can only be shown when user profile is of the current logged-in user
+        $current_user = Auth::id();
+
         $user = $id;
 
+        // Show all products from this user
         $userWithProducts = User::with('products')->findOrFail($user->id);
 
+        $borrowed_products = Product::where('borrower_id', $id->id)->get();
+
         $products = $userWithProducts->products;
-        return view('profile.show', compact('user', 'products'));
+        return view('profile.show', compact('user', 'products', 'current_user', 'borrowed_products'));
     }
     /**
      * Update the user's profile information.

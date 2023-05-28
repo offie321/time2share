@@ -52,8 +52,10 @@
                 <button id="showReviewsButton" class="btn">Show Reviews</button>
                 {{-- //TODO show only on profile page of user that's logged in --}}
                 {{-- //TODO show the status of a product loaned out               --}}
+                @if($current_user == $user->id)
                 <button id="showBorrowedButton" class="btn">Show Borrowed Products</button>
                 <button id="showLoanedButton" class="btn">Show Loaned Products</button>
+                @endif
             </article>
 
             <br><br>
@@ -67,7 +69,29 @@
                 <div id="borrowedSection" style="display: none;">
                     <!-- Content for reviews -->
                     <h2>Borrowed</h2>
-                    <p>This section displays all borrowed items.</p>
+                    <section class="profile_products">
+                        @if(count($borrowed_products) > 0)
+                            @foreach($borrowed_products as $product)
+                                <article class="product">
+                                    <a href="/products/{{$product->id}}">
+                                        <h1>{{ $product->name }}</h1>
+                                    </a>
+
+                                    <p class="lender_info">
+                                        {{ $product->lender_id }}
+                                    </p>
+
+                                    <p>{{ $product->summary }}</p>
+                                    @if($product->categories != null)
+                                        <span class="product_categories">{{ $product->categories }}</span>
+                                    @endif
+
+                                </article>
+                            @endforeach
+                        @else
+                            <p>This user has no products</p>
+                        @endif
+                    </section>
                 </div>
 
                 <div id="loanedSection" style="display: none;">

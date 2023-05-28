@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lending;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,10 @@ class LendingController extends Controller
 
 
         $lending->save();
+
+        $product = Product::find($product_id);
+        $product->borrower_id = $current_user;
+        $product->save();
 
         return redirect()->route('products.index')->with('success', 'Product added');
     }

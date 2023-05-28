@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('summary');
             $table->string('categories')->nullable(true);
             $table->integer('days_from_now');
+            $table->unsignedBigInteger('borrower_id')->nullable();
+            $table->foreign('borrower_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
