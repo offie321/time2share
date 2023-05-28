@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lending;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -20,13 +21,20 @@ class ProductController extends Controller
     {
         $searchTerm = $request->input('search');
 
+        $products = Product::whereNotIn('id', function ($query) {
+            $query->select('product_id')
+                ->from('lendings')
+                ->whereIn('status', ['accepted', 'pending']);
+        });
+
         if ($searchTerm) {
-            $products = Product::where('name', 'like', '%' . $searchTerm . '%')
-                ->orWhere('summary', 'like', '%' . $searchTerm . '%')
-                ->get();
-        } else {
-            $products = Product::all();
+            $products->where(function ($query) use ($searchTerm) {
+                $query->where('name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('summary', 'like', '%' . $searchTerm . '%');
+            });
         }
+
+        $products = $products->get();
 
         return view('products.index', compact('products'));
     }
@@ -58,11 +66,12 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->summary = $request->summary;
         $product->categories = $request->categories;
+        $product->days_from_now = $request->days;
+
 
         $product->save();
 
         return redirect()->route('products.index')->with('success', 'Product added');
-
     }
 
     /**
@@ -101,6 +110,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->summary = $request->summary;
         $product->categories = $request->categories;
+        $product->days_from_now = $request->days;
 
         $product->save();
 
