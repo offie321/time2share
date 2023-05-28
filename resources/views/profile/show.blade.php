@@ -49,8 +49,11 @@
             <br>
             <article class="profile_buttons">
                 <button id="showProductsButton" class="btn">Show Products</button>
-                <button id="showBorrowedButton" class="btn">Show Borrowed Products</button>
                 <button id="showReviewsButton" class="btn">Show Reviews</button>
+                {{-- //TODO show only on profile page of user that's logged in --}}
+                {{-- //TODO show the status of a product loaned out               --}}
+                <button id="showBorrowedButton" class="btn">Show Borrowed Products</button>
+                <button id="showLoanedButton" class="btn">Show Loaned Products</button>
             </article>
 
             <br><br>
@@ -64,6 +67,12 @@
                 <div id="borrowedSection" style="display: none;">
                     <!-- Content for reviews -->
                     <h2>Borrowed</h2>
+                    <p>This section displays all borrowed items.</p>
+                </div>
+
+                <div id="loanedSection" style="display: none;">
+                    <!-- Content for reviews -->
+                    <h2>Loaned</h2>
                     <p>This section displays all borrowed items.</p>
                 </div>
 
@@ -108,18 +117,28 @@
         document.getElementById("reviewsSection").style.display = "block";
         document.getElementById("productsSection").style.display = "none";
         document.getElementById("borrowedSection").style.display = "none";
+        document.getElementById("loanedSection").style.display = "none";
     });
 
     document.getElementById("showProductsButton").addEventListener("click", function() {
         document.getElementById("reviewsSection").style.display = "none";
         document.getElementById("productsSection").style.display = "block";
         document.getElementById("borrowedSection").style.display = "none";
+        document.getElementById("loanedSection").style.display = "none";
     });
 
     document.getElementById("showBorrowedButton").addEventListener("click", function() {
         document.getElementById("reviewsSection").style.display = "none";
         document.getElementById("productsSection").style.display = "none";
         document.getElementById("borrowedSection").style.display = "block";
+        document.getElementById("loanedSection").style.display = "none";
+    });
+
+    document.getElementById("showLoanedButton").addEventListener("click", function() {
+        document.getElementById("reviewsSection").style.display = "none";
+        document.getElementById("productsSection").style.display = "none";
+        document.getElementById("borrowedSection").style.display = "none";
+        document.getElementById("loanedSection").style.display = "block";
     });
 
 
