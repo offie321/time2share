@@ -27,4 +27,9 @@ class Product extends Model
     {
         return $this->belongsTo(User::class, 'lender_id');
     }
+
+    public function lendings()
+    {
+        return $this->hasMany(Lending::class);
+    }
 }

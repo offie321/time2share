@@ -532,6 +532,8 @@ video {
   display: flex;
 }.inline-flex {
   display: inline-flex;
+}.table {
+  display: table;
 }.grid {
   display: grid;
 }.hidden {
@@ -984,7 +986,13 @@ video {
     padding: 0.4em 0.6em;
     border-radius: 2em;
     color: white;
-}.btn:hover, .btn-2:hover, .btn-3:hover{
+}.accept-btn, .accept-btn-nw{
+    margin: 1em 0em;
+    background-color: #297c46;
+    padding: 0.4em 0.6em;
+    border-radius: 2em;
+    color: white;
+}.btn:hover, .btn-2:hover, .btn-3:hover, .accept-btn:hover{
     cursor: pointer;
     filter: brightness(0.8);
 }.profile_product_review{
@@ -999,12 +1007,22 @@ video {
     background-color: #293252;
     border-radius: 0.5em;
     padding: 0.4em;
-}.profile_buttons{
+}.profile_buttons {
     display: flex;
     gap: 1em;
     justify-content: space-around;
     max-width: -moz-fit-content;
     max-width: fit-content;
+}.profile_products table{
+    background-color: #2d3748;
+}.profile_products td, .profile_products th{
+    border: 0.15em solid black;
+}.profile_products th{
+    text-align: left;
+    padding: 1em 0.5em;
+    background-color: #1f2937;
+}.profile_products td{
+    padding: 0.5em 0.4em;
 }.hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));

@@ -9,11 +9,13 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['lending_id', 'reviewer_id', 'rating', 'comment'];
+
     protected $table = 'reviews';
 
     public function lending()
     {
-        return $this->belongsTo(Lending::class);
+        return $this->belongsTo(Lending::class, 'lending_id');
     }
 
     public function reviewer()

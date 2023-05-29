@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'lender_id' => 1,
+            'lender_id' => 2,
             'name' => 'Speelgoed auto',
             'summary' => 'Een hele mooie speelgoed auto',
             'categories' => 'Speelgoed',
@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'lender_id' => 1,
+            'lender_id' => 2,
             'name' => 'Boormachine',
             'summary' => 'Een hele goede boormachine',
             'categories' => 'Gereedschap',

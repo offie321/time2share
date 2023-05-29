@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('lendings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products', 'id')->onDelete('cascade');
-            $table->foreignId('borrower_id')->constrained('users', 'id')->onDelete('cascade');
-            $table->foreignId('lender_id')->constrained('users', 'id')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products', 'id');
+            $table->foreignId('borrower_id')->constrained('users', 'id');
+            $table->foreignId('lender_id')->constrained('users', 'id');
             $table->dateTime('deadline');
             $table->string('status');
             $table->timestamps();

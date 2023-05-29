@@ -24,7 +24,7 @@ class LendingController extends Controller
         $lending->borrower_id = $current_user;
         $lending->lender_id = $lender_id;
         $lending->deadline = $deadline;
-        $lending->status = "pending";
+        $lending->status = "Borrowed";
 
 
         $lending->save();
@@ -35,4 +35,16 @@ class LendingController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product added');
     }
+
+    public function return($productId)
+    {
+        $lending = Lending::where('product_id', $productId)->firstOrFail();
+
+        $lending_id = $lending->id;
+        $lending->status = "Returned";
+        $lending->save();
+
+        return redirect()->route('reviews.create', ['lending_id' => $lending_id]);
+    }
+
 }
