@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Lending;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,7 +28,8 @@ class ProfileController extends Controller
     public function show(User $id)
     {
         // This is so some content can only be shown when user profile is of the current logged-in user
-        $current_user = Auth::id();
+        $currentUserId = Auth::id();
+        $currentUser = Auth::user();
 
         $user = $id;
 
@@ -35,8 +38,17 @@ class ProfileController extends Controller
 
         $borrowed_products = Product::where('borrower_id', $id->id)->get();
 
+        $reviews = Review::where('reviewer_id', $id->id)->get();
+
+//        $userLendings = Lending::with('borrower', 'lender')->where('borrower_id', $id->id)->get();
+        $userLendings = Lending::with(['product', 'borrower'])
+            ->where('lender_id', $currentUser->id)
+            ->get();
+
+
+
         $products = $userWithProducts->products;
-        return view('profile.show', compact('user', 'products', 'current_user', 'borrowed_products'));
+        return view('profile.show', compact('user', 'products', 'currentUserId', 'borrowed_products', 'userLendings', 'reviews'));
     }
     /**
      * Update the user's profile information.

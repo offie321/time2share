@@ -52,7 +52,7 @@
                 <button id="showReviewsButton" class="btn">Show Reviews</button>
                 {{-- //TODO show only on profile page of user that's logged in --}}
                 {{-- //TODO show the status of a product loaned out               --}}
-                @if($current_user == $user->id)
+                @if($currentUserId == $user->id)
                 <button id="showBorrowedButton" class="btn">Show Borrowed Products</button>
                 <button id="showLoanedButton" class="btn">Show Loaned Products</button>
                 @endif
@@ -63,7 +63,19 @@
                 <div id="reviewsSection" style="display: none;">
                     <!-- Content for reviews -->
                     <h2>Reviews</h2>
-                    <p>This section displays reviews.</p>
+                    <section class="profile_products">
+                        @if(!empty($reviews))
+                            @foreach($reviews as $review)
+                                <article class="product">
+                                    <h2>{{$review->rating}}</h2>
+                                    <p>{{$review->comment}}</p>
+
+                                </article>
+                            @endforeach
+                        @else
+                            <p>This user has no products</p>
+                        @endif
+                    </section>
                 </div>
 
                 <div id="borrowedSection" style="display: none;">
@@ -96,8 +108,38 @@
 
                 <div id="loanedSection" style="display: none;">
                     <!-- Content for reviews -->
-                    <h2>Loaned</h2>
-                    <p>This section displays all borrowed items.</p>
+                    <h2>Lendings</h2>
+                    <section class="profile_products">
+                        <table>
+                            <tr>
+                                <th>Product</th>
+                                <th>Borrowed By</th>
+                                <th>Lended By</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                            @if(count($userLendings) > 0)
+                                @foreach($userLendings as $lending)
+                                    <tr>
+                                        <td>{{ $lending->product->name }}</td>
+                                        <td>{{ $lending->borrower->name }}</td>
+                                        <td>{{ $lending->lender->name }}</td>
+                                        <td>{{$lending->deadline}}</td>
+                                        <td>{{$lending->status}}</td>
+                                        @if($lending->status == "Returned")
+                                            <td><button class="accept-btn">Accept</button></td>
+                                        @else
+                                            <td><button class="accept-btn-nw">Product not returned</button></td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                            @else
+                                <p>This user has no products</p>
+                            @endif
+                        </table>
+
+                    </section>
                 </div>
 
                 <div id="productsSection" style="display: block;">
