@@ -38,14 +38,13 @@ class ProfileController extends Controller
 
         $borrowed_products = Product::where('borrower_id', $id->id)->get();
 
-        $reviews = Review::where('reviewer_id', $id->id)->get();
+        $reviews = Review::join('lendings', 'lendings.id', '=', 'reviews.lending_id')
+            ->where('lendings.lender_id', $id->id)
+            ->get();
 
-//        $userLendings = Lending::with('borrower', 'lender')->where('borrower_id', $id->id)->get();
         $userLendings = Lending::with(['product', 'borrower'])
             ->where('lender_id', $currentUser->id)
             ->get();
-
-
 
         $products = $userWithProducts->products;
         return view('profile.show', compact('user', 'products', 'currentUserId', 'borrowed_products', 'userLendings', 'reviews'));
