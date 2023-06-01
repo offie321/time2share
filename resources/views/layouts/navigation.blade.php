@@ -24,6 +24,12 @@
                         {{ __('Add new Product') }}
                     </x-nav-link>
 
+                    @if(Auth::user()->role == 'admin')
+                        <x-nav-link>
+                            {{ __('Admin Panel') }}
+                        </x-nav-link>
+                    @endif
+
                 </div>
             </div>
 
