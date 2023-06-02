@@ -41,6 +41,7 @@ Route::resource('products', ProductController::class);
 
 Route::get('/products/{id}/lend/{lender}/{days}', [LendingController::class, 'lend']);
 Route::get('/products/{id}/return', [LendingController::class, 'return']);
+Route::get('/{id}/accept', [LendingController::class, 'accept']);
 
 Route::get('/reviews/create/{lending_id}', [ReviewController::class, 'create'])->name('reviews.create');
 Route::post('/reviews/store/{lending_id}', [ReviewController::class, 'store'])->name('reviews.store');
