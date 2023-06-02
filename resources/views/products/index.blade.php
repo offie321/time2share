@@ -44,9 +44,7 @@
                             <h1>{{ $product->name }}</h1>
                         </a>
 
-                            <p class="lender_info">
-                                {{ $product->lender_id }}
-                            </p>
+                        <img class="product_image_index" src="{{ asset('images/' . $product->image) }}" alt="Product Image">
 
                             How many days from now: {{ $product->days_from_now }}
 

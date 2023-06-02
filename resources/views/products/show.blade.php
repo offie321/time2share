@@ -9,7 +9,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     <!-- Scripts -->
     {{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
@@ -31,41 +31,46 @@
     <!-- Page Content -->
     <main>
         <section class="sngl_prod">
-            <a class="btn" href="{{ redirect()->getUrlGenerator()->previous() }}">Go back</a>
-            @if(Auth::id() == $product->lender_id)
-                <a class="btn-2" href="/products/{{$product->id}}/edit">Edit</a>
-            @endif
-            <article class="product">
-                <h1>{{ $product->name }}</h1>
+            <article class="flex">
+                <article>
+                    <a class="btn" href="{{ redirect()->getUrlGenerator()->previous() }}">Go back</a>
+                    @if(Auth::id() == $product->lender_id)
+                        <a class="btn-2" href="/products/{{$product->id}}/edit">Edit</a>
+                    @endif
+                    <article class="product">
+                        <h1>{{ $product->name }}</h1>
 
-                <a href="{{ route('profile.show', ['id' => $product->lender_id]) }}">
-                    <p class="lender_info">Uitgeleend door: {{ $username }}</p>
-                    <p>In te leveren binnen <u><b>{{$product->days_from_now}}</b></u> dagen</p>
-                </a>
-                <br>
-                <h3>Omschrijving: </h3>
-                <p>{{ $product->summary }}</p>
-                @if($product->categories != null)
-                <span class="product_categories">{{ $product->categories }}</span>
-                @endif
+                        <a href="{{ route('profile.show', ['id' => $product->lender_id]) }}">
+                            <p class="lender_info">Uitgeleend door: {{ $username }}</p>
+                            <p>In te leveren binnen <u><b>{{$product->days_from_now}}</b></u> dagen</p>
+                        </a>
+                        <br>
+                        <h3>Omschrijving: </h3>
+                        <p>{{ $product->summary }}</p>
+                        @if($product->categories != null)
+                            <span class="product_categories">{{ $product->categories }}</span>
+                        @endif
+                    </article>
+
+                    @if(Auth::id() == $product->lender_id || auth()->user()->role == 'admin')
+                        <form action="/products/{{ $product->id }}" method="POST">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <input class="btn-3" type="submit" name="submit" value="Delete">
+                        </form>
+                    @endif
+                    @if($product->borrower_id == Auth::id())
+                        {{--//TODO Make this return button work and turn lending status to: awaiting acception --}}
+                        <a class="btn" href="/products/{{$product->id}}/return">Return</a>
+                    @elseif(Auth::id() != $product->lender_id)
+                        <a class="btn"
+                           href="/products/{{$product->id}}/lend/{{$product->lender_id}}/{{$product->days_from_now}}">Borrow</a>
+                    @endif
+                </article>
+                <article>
+                    <img class="product_image" src="{{ asset('images/' . $product->image) }}" alt="Product Image">
+                </article>
             </article>
-
-            @if(Auth::id() == $product->lender_id || auth()->user()->role == 'admin')
-            <form action="/products/{{ $product->id }}" method="POST">
-                @csrf
-                {{method_field('DELETE')}}
-                <input class="btn-3" type="submit" name="submit" value="Delete">
-            </form>
-            @endif
-            @if($product->borrower_id == Auth::id())
-            {{--//TODO Make this return button work and turn lending status to: awaiting acception --}}
-                <a class="btn" href="/products/{{$product->id}}/return">Return</a>
-            @elseif(Auth::id() != $product->lender_id)
-                <a class="btn" href="/products/{{$product->id}}/lend/{{$product->lender_id}}/{{$product->days_from_now}}">Borrow</a>
-            @endif
-
-
-
         </section>
     </main>
 </div>
