@@ -47,4 +47,12 @@ class LendingController extends Controller
         return redirect()->route('reviews.create', ['lending_id' => $lending_id]);
     }
 
+    public function accept($lending)
+    {
+        $lending = Lending::where('id', $lending)->firstOrFail();
+        $lending->delete();
+
+        return redirect()->route('products.index')->with('success', 'lending deleted');
+    }
+
 }

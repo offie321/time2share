@@ -100,9 +100,6 @@
                                         <h1>{{ $product->name }}</h1>
                                     </a>
 
-                                    <p class="lender_info">
-                                        {{ $product->lender_id }}
-                                    </p>
 
                                     <p>{{ $product->summary }}</p>
                                     @if($product->categories != null)
@@ -139,7 +136,7 @@
                                         <td>{{$lending->deadline}}</td>
                                         <td>{{$lending->status}}</td>
                                         @if($lending->status == "Returned")
-                                            <td><button class="accept-btn">Accept</button></td>
+                                            <td><a href="/{{$lending->id}}/accept" class="accept-btn">Accept</a></td>
                                         @else
                                             <td><button class="accept-btn-nw">Product not returned</button></td>
                                         @endif
@@ -163,10 +160,6 @@
                                     <a href="/products/{{$product->id}}">
                                         <h1>{{ $product->name }}</h1>
                                     </a>
-
-                                    <p class="lender_info">
-                                        {{ $product->lender_id }}
-                                    </p>
 
                                     <p>{{ $product->summary }}</p>
                                     @if($product->categories != null)
