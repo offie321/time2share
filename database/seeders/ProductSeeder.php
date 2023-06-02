@@ -23,10 +23,20 @@ class ProductSeeder extends Seeder
         // Create dummy products
         Product::create([
             'lender_id' => 1,
-            'name' => 'Product 1',
-            'summary' => 'Summary of Product 1',
-            'categories' => 'Gehakt',
+            'name' => 'Bank',
+            'summary' => 'Een zeer mooie bank',
+            'categories' => 'Meubel',
+            'image' => 'bank.jpg',
             'days_from_now' => 5
+        ]);
+
+        Product::create([
+            'lender_id' => 2,
+            'name' => 'Stofzuiger',
+            'summary' => 'Goedzuigende stofzuiger',
+            'categories' => 'Zuigt',
+            'image' => 'stofzuiger.jpg',
+            'days_from_now' => 12
         ]);
 
         Product::create([
@@ -34,15 +44,26 @@ class ProductSeeder extends Seeder
             'name' => 'Speelgoed auto',
             'summary' => 'Een hele mooie speelgoed auto',
             'categories' => 'Speelgoed',
+            'image' => 'speelgoedauto.jpg',
             'days_from_now' => 10
         ]);
 
         Product::create([
             'lender_id' => 2,
-            'name' => 'Boormachine',
-            'summary' => 'Een hele goede boormachine',
-            'categories' => 'Gereedschap',
-            'days_from_now' => 15
+            'name' => 'playstation',
+            'summary' => 'Om een avondje leuke spelletjes te spelen',
+            'categories' => 'Game console',
+            'image' => 'playstation.png',
+            'days_from_now' => 3
+        ]);
+
+        Product::create([
+            'lender_id' => 2,
+            'name' => 'Wasmachine',
+            'summary' => 'Voor een erg schone was',
+            'categories' => 'Wasmachine',
+            'image' => 'wasmachine.jpg',
+            'days_from_now' => 50
         ]);
     }
 }
