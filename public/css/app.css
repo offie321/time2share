@@ -992,8 +992,6 @@ video {
 }.btn:hover, .btn-2:hover, .btn-3:hover, .accept-btn:hover{
     cursor: pointer;
     filter: brightness(0.8);
-}.profile_product_review{
-
 }.profile_product_review h2{
     font-size: 2.5em;
 }.profile_products{
@@ -1026,6 +1024,12 @@ video {
 }.product_image_index{
     width: 5vw;
     height: 5vw;
+}@media only screen and (max-width: 1200px) {
+    .sngl_prod{
+        width: 80vw;
+
+
+    }
 }.hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));

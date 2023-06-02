@@ -30,7 +30,6 @@
 
     <!-- Page Content -->
     <main>
-        {{ var_dump($user->blocked) }}
         <section class="sngl_prod">
             @if($errors->any())
                 <h4>{{$errors->first()}}</h4>
@@ -118,6 +117,7 @@
                     <!-- Content for reviews -->
                     <h2>Lendings</h2>
                     <section class="profile_products">
+                        @if(count($userLendings) > 0)
                         <table>
                             <tr>
                                 <th>Product</th>
@@ -127,7 +127,7 @@
                                 <th>Status</th>
                                 <th></th>
                             </tr>
-                            @if(count($userLendings) > 0)
+
                                 @foreach($userLendings as $lending)
                                     <tr>
                                         <td>{{ $lending->product->name }}</td>
@@ -142,10 +142,10 @@
                                         @endif
                                     </tr>
                                 @endforeach
-                            @else
-                                <p>This user has no products</p>
-                            @endif
                         </table>
+                        @else
+                            <p>This user has not lended out products yet</p>
+                        @endif
 
                     </section>
                 </div>
