@@ -49,7 +49,20 @@ class LendingController extends Controller
 
     public function accept($lending)
     {
+
+
+
         $lending = Lending::where('id', $lending)->firstOrFail();
+
+        $product_id = $lending->product_id;
+
+        $product = Product::find($product_id);
+
+        $product->borrower_id = null;
+
+        $product->save();
+
+
         $lending->delete();
 
         return redirect()->route('products.index')->with('success', 'lending deleted');
