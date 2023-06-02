@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LendingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
@@ -44,4 +45,5 @@ Route::get('/products/{id}/return', [LendingController::class, 'return']);
 Route::get('/reviews/create/{lending_id}', [ReviewController::class, 'create'])->name('reviews.create');
 Route::post('/reviews/store/{lending_id}', [ReviewController::class, 'store'])->name('reviews.store');
 
-
+Route::get('/block/{user}', [AdminController::class, 'blockUser']);
+Route::get('/unblock/{user}', [AdminController::class, 'unblockUser']);

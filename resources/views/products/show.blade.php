@@ -50,7 +50,7 @@
                 @endif
             </article>
 
-            @if(Auth::id() == $product->lender_id)
+            @if(Auth::id() == $product->lender_id || auth()->user()->role == 'admin')
             <form action="/products/{{ $product->id }}" method="POST">
                 @csrf
                 {{method_field('DELETE')}}

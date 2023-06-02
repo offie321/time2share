@@ -30,8 +30,18 @@
 
     <!-- Page Content -->
     <main>
+        {{ var_dump($user->blocked) }}
         <section class="sngl_prod">
-
+            @if($errors->any())
+                <h4>{{$errors->first()}}</h4>
+            @endif
+            @if(auth()->user()->role == 'admin' && $user->role == 'user')
+                @if($user->blocked == 1)
+                        <a class="btn-2" href="/unblock/{{$user->id}}">Unblock this user</a>
+                    @else
+                <a class="btn-3" href="/block/{{$user->id}}">Block this user</a>
+                    @endif
+            @endif
             <h1>{{ $user->name }}</h1>
             <p>
                 {{ $user->email }}
@@ -39,6 +49,7 @@
             <hr>
             Aangemaakt op: {{ $user->created_at }}
             <br><br>
+
 
 {{--            // TODO Change so that this button only displays when user is the same as authenticated user--}}
             <a class="btn-2" href="/profile">
