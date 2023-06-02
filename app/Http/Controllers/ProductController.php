@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Lending;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -46,9 +44,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
         //
-        return view('products.create', compact('categories'));
+        return view('products.create');
     }
 
     /**
@@ -65,9 +62,17 @@ class ProductController extends Controller
         $product->lender_id = $id;
         $product->name = $request->name;
         $product->summary = $request->summary;
-        $product->categories = $request->categories;
+        $product->categories = $request->categorie;
         $product->days_from_now = $request->days;
 
+
+        // Handle the image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $filename);
+            $product->image = $filename;
+        }
 
         $product->save();
 
@@ -115,7 +120,6 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->route('products.index')->with('success', 'Product Changed');
-
     }
 
     /**
@@ -129,5 +133,5 @@ class ProductController extends Controller
         //
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Product Deleted');
-    }
+}
 }

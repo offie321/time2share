@@ -70,6 +70,10 @@
 
 .searchbar button:hover {filter: brightness(0.8)}
 
+.product h1{
+    font-size: 1.5em;
+}
+
 /*Single product styling */
 .sngl_prod{
     background-color: #3e4d67;
@@ -170,4 +174,15 @@
 
 .profile_products td{
     padding: 0.5em 0.4em;
+}
+
+.product_image{
+    width: 20vw;
+    height: 20vw;
+}
+
+
+.product_image_index{
+    width: 5vw;
+    height: 5vw;
 }
